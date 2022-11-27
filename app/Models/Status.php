@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class Status extends Model
 {
     use HasFactory;
+    protected $fillable = ['body', 'identifier', 'user_id'];
 
     public function user()
     {
