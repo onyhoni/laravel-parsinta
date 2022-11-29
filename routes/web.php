@@ -1,9 +1,11 @@
 <?php
 
+use App\Http\Controllers\FollowingController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\StatusController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TimelineController;
+use App\Http\Controllers\ProfileInformationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,6 +32,10 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::get('/timeline', TimelineController::class)->name('timeline');
     Route::post('status/create', [StatusController::class, 'store'])->name('status.create');
+
+    Route::get('profile/{user}/{following}', FollowingController::class)->name('profile.following');
+
+    Route::get('/profile/{user}', ProfileInformationController::class)->name('profile');
 });
 
 require __DIR__ . '/auth.php';
